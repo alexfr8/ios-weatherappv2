@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  WeatherAppv2
+
+  Created by Alejandro Fernández Ruiz on 28/07/2019.
+  Copyright © 2019 Alejandro Fernández Ruiz. All rights reserved.
+*/
+
+
+//WAREQUEST DATA SCENE
+
+"datarequest.button.title" = "Search";
+"datarequest.titlelabel.body" = "WeatherApp v2";
+"datarequest.infolabel.body"  = "This screen should have the option to enter a city name or zip code as an input, get the current weather of that city/zip code. Using the latitude and longitude of the city/zip code that you searched, calculate for 4 new locations at north, south, west and east with 200 km distance from the original location, and request their weather.";
+
+"datarequest.inputtitle.body" = "Please introduce  the city name or zipcode";
+"datarequest.input.placehodler" = "City or zip";
