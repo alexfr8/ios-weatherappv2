@@ -26,18 +26,24 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
     
     
     weak var view: (WARequestDataDisplayLogic & WARequestDataPresenterRouterLogic)?
-   
+    var networkManager: OpenWeatherManager?
+    
+    
     func setupView() {
         
         let viewModel = WARequestData.ViewModel()
-        
+        self.networkManager = OpenWeatherManager()
         view?.setupView()
         view?.setupText(viewModel: viewModel)
         
     }
     
     func manageSearchButtonClicked() {
-        
+
+        networkManager?.getCurrentWeatherByCoords(lat: 4.56, long: 4.56, completion: { (current, erro) in
+            print(current)
+        })
+       
     }
     // MARK: - Services
     
