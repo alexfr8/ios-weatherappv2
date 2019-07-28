@@ -40,6 +40,10 @@
 		C12B49F122EE267E00B3B160 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F022EE267E00B3B160 /* Current.swift */; };
 		C12B49F322EE276300B3B160 /* SystemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F222EE276300B3B160 /* SystemModel.swift */; };
 		C12B49F522EE2DE700B3B160 /* MainCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F422EE2DE700B3B160 /* MainCurrent.swift */; };
+		C12B49F822EE35C100B3B160 /* WAShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F722EE35C100B3B160 /* WAShowDataViewController.swift */; };
+		C12B49FA22EE35D400B3B160 /* WAShowDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F922EE35D400B3B160 /* WAShowDataPresenter.swift */; };
+		C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49FB22EE35E400B3B160 /* WAShowData.swift */; };
+		C12B49FE22EE35FC00B3B160 /* WAShowData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,10 @@
 		C12B49F022EE267E00B3B160 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
 		C12B49F222EE276300B3B160 /* SystemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemModel.swift; sourceTree = "<group>"; };
 		C12B49F422EE2DE700B3B160 /* MainCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCurrent.swift; sourceTree = "<group>"; };
+		C12B49F722EE35C100B3B160 /* WAShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowDataViewController.swift; sourceTree = "<group>"; };
+		C12B49F922EE35D400B3B160 /* WAShowDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowDataPresenter.swift; sourceTree = "<group>"; };
+		C12B49FB22EE35E400B3B160 /* WAShowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowData.swift; sourceTree = "<group>"; };
+		C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WAShowData.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,7 @@
 		C12B49B922EDFF9000B3B160 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C12B49F622EE357B00B3B160 /* WAShowDataViewController */,
 				C12B49BA22EDFF9800B3B160 /* WARequestDataViewController */,
 				C12B49BF22EE06B400B3B160 /* Localizable.strings */,
 			);
@@ -273,6 +282,17 @@
 				C12B49EE22EE164C00B3B160 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C12B49F622EE357B00B3B160 /* WAShowDataViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C12B49F722EE35C100B3B160 /* WAShowDataViewController.swift */,
+				C12B49F922EE35D400B3B160 /* WAShowDataPresenter.swift */,
+				C12B49FB22EE35E400B3B160 /* WAShowData.swift */,
+				C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */,
+			);
+			path = WAShowDataViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C12B499622EDFEBD00B3B160 /* LaunchScreen.storyboard in Resources */,
+				C12B49FE22EE35FC00B3B160 /* WAShowData.storyboard in Resources */,
 				C12B49C022EE06B400B3B160 /* Localizable.strings in Resources */,
 				C12B499322EDFEBD00B3B160 /* Assets.xcassets in Resources */,
 				C12B499122EDFEBB00B3B160 /* WARequestDataViewController.storyboard in Resources */,
@@ -414,14 +435,17 @@
 				C12B49F322EE276300B3B160 /* SystemModel.swift in Sources */,
 				C12B49BE22EE05E600B3B160 /* WARequestData.swift in Sources */,
 				C12B49DA22EE151F00B3B160 /* ParameterEncoding.swift in Sources */,
+				C12B49FA22EE35D400B3B160 /* WAShowDataPresenter.swift in Sources */,
 				C12B49F522EE2DE700B3B160 /* MainCurrent.swift in Sources */,
 				C12B49E822EE151F00B3B160 /* HTTPTask.swift in Sources */,
+				C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */,
 				C12B49E022EE151F00B3B160 /* Wind.swift in Sources */,
 				C12B49DF22EE151F00B3B160 /* Forecast.swift in Sources */,
 				C12B49BC22EE049D00B3B160 /*  WARequestDataPresenter.swift in Sources */,
 				C12B49EB22EE151F00B3B160 /* NetworkLogger.swift in Sources */,
 				C12B49EA22EE151F00B3B160 /* Router.swift in Sources */,
 				C12B49E322EE151F00B3B160 /* Coordinate.swift in Sources */,
+				C12B49F822EE35C100B3B160 /* WAShowDataViewController.swift in Sources */,
 				C12B49E422EE151F00B3B160 /* Temperature.swift in Sources */,
 				C12B49E922EE151F00B3B160 /* HttpMethod.swift in Sources */,
 				C12B49DB22EE151F00B3B160 /* URLParameterEncoding.swift in Sources */,

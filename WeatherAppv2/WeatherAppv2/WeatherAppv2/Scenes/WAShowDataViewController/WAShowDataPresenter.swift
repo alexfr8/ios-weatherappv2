@@ -1,31 +1,30 @@
 //
-//   WARequestDataPresenter.swift
+//  WAShowDataPresenter.swift
 //  WeatherAppv2
 //
 //  Created by Alejandro Fernández Ruiz on 28/07/2019.
 //  Copyright © 2019 Alejandro Fernández Ruiz. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-protocol WARequestDataDisplayLogic: class {
+
+protocol WAShowDataDisplayLogic: class {
     func setupView()
     func setupText(viewModel: WARequestData.ViewModel)
 }
 
-protocol WARequestDataPresenterRouterLogic: class {
-    func navigateToDataShow()
-}
 
-protocol WARequestDataStore {
+
+protocol WAShowDataStore {
     //    var name: String { get set }
 }
 
-class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
-   
+class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     
     
-    weak var view: (WARequestDataDisplayLogic & WARequestDataPresenterRouterLogic)?
+    
+    weak var view: WAShowDataDisplayLogic?
     var networkManager: OpenWeatherManager?
     
     
@@ -38,11 +37,7 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
         
     }
     
-    func manageSearchButtonClicked() {
-
-       
-       
-    }
+   
     // MARK: - Services
     
 }
