@@ -44,6 +44,7 @@
 		C12B49FA22EE35D400B3B160 /* WAShowDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49F922EE35D400B3B160 /* WAShowDataPresenter.swift */; };
 		C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49FB22EE35E400B3B160 /* WAShowData.swift */; };
 		C12B49FE22EE35FC00B3B160 /* WAShowData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */; };
+		C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		C12B49F922EE35D400B3B160 /* WAShowDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowDataPresenter.swift; sourceTree = "<group>"; };
 		C12B49FB22EE35E400B3B160 /* WAShowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowData.swift; sourceTree = "<group>"; };
 		C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WAShowData.storyboard; sourceTree = "<group>"; };
+		C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loading.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		C12B498A22EDFEBB00B3B160 /* WeatherAppv2 */ = {
 			isa = PBXGroup;
 			children = (
+				C12B49FF22EE3A3B00B3B160 /* Extensions */,
 				C12B49ED22EE15CF00B3B160 /* Constants */,
 				C12B49B922EDFF9000B3B160 /* Scenes */,
 				C12B49C122EE151F00B3B160 /* Networking */,
@@ -293,6 +296,14 @@
 				C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */,
 			);
 			path = WAShowDataViewController;
+			sourceTree = "<group>";
+		};
+		C12B49FF22EE3A3B00B3B160 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +451,7 @@
 				C12B49E822EE151F00B3B160 /* HTTPTask.swift in Sources */,
 				C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */,
 				C12B49E022EE151F00B3B160 /* Wind.swift in Sources */,
+				C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */,
 				C12B49DF22EE151F00B3B160 /* Forecast.swift in Sources */,
 				C12B49BC22EE049D00B3B160 /*  WARequestDataPresenter.swift in Sources */,
 				C12B49EB22EE151F00B3B160 /* NetworkLogger.swift in Sources */,
