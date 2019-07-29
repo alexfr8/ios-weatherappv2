@@ -11,6 +11,9 @@ import UIKit
 
 protocol WAShowDataPresenterLogic {
     func setupView()
+    func setupCoordinates()
+    func retrieveDataForCoordinates()
+    func calculateResults()
 }
 
 
@@ -88,6 +91,8 @@ class WAShowDataViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.setupView()
+        presenter?.setupCoordinates()
+        presenter?.retrieveDataForCoordinates()
     }
     
     //IBActions
@@ -109,6 +114,10 @@ class WAShowDataViewController: BaseViewController {
 
 
 extension WAShowDataViewController : WAShowDataDisplayLogic {
+   
+    
+   
+    
     func setupView() {
         
     }
@@ -116,6 +125,29 @@ extension WAShowDataViewController : WAShowDataDisplayLogic {
     func setupText(viewModel: WARequestData.ViewModel) {
         
     }
+    func showError(msg: String) {
+        let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
+    func completedRetrieve() {
+        self.presenter?.calculateResults()
+    }
 
+    func setupTempValues(tempValue: String, tempCity: String, tempLat: String, tempLong: String, cardinal: String) {
+        
+    }
+    
+    func setupHumidityValues(humidityValue: String, humidityCity: String, humiLat: String, humiLong: String, cardinal: String) {
+        
+    }
+    
+    func setupRainValues(rainValue: String, rainCity: String, rainLat: String, rainLong: String, cardinal: String) {
+        
+    }
+    
+    func setupWindValues(windValue: String, windCity: String, windLat: String, windLong: String, cardinal: String) {
+        
+    }
 }

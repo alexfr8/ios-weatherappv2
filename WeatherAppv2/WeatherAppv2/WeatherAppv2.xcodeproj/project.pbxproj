@@ -47,6 +47,7 @@
 		C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */; };
 		C1792F9B22EF4DF600BDAF6E /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9A22EF4DF600BDAF6E /* String+extension.swift */; };
 		C1792F9D22EF553D00BDAF6E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */; };
+		C1792FA022EF717600BDAF6E /* UtilsCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9F22EF717600BDAF6E /* UtilsCoord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loading.swift"; sourceTree = "<group>"; };
 		C1792F9A22EF4DF600BDAF6E /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C1792F9F22EF717600BDAF6E /* UtilsCoord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsCoord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		C12B498A22EDFEBB00B3B160 /* WeatherAppv2 */ = {
 			isa = PBXGroup;
 			children = (
+				C1792F9E22EF707200BDAF6E /* Utils */,
 				C12B49FF22EE3A3B00B3B160 /* Extensions */,
 				C12B49ED22EE15CF00B3B160 /* Constants */,
 				C12B49B922EDFF9000B3B160 /* Scenes */,
@@ -310,6 +313,14 @@
 				C1792F9A22EF4DF600BDAF6E /* String+extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C1792F9E22EF707200BDAF6E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C1792F9F22EF717600BDAF6E /* UtilsCoord.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,6 +485,7 @@
 				C12B49E122EE151F00B3B160 /* Clouds.swift in Sources */,
 				C12B49E522EE151F00B3B160 /* SevenDaysForecasting.swift in Sources */,
 				C12B498C22EDFEBB00B3B160 /* AppDelegate.swift in Sources */,
+				C1792FA022EF717600BDAF6E /* UtilsCoord.swift in Sources */,
 				C12B49E222EE151F00B3B160 /* City.swift in Sources */,
 				C12B49EC22EE151F00B3B160 /* EndPointType.swift in Sources */,
 				C12B49DE22EE151F00B3B160 /* OpenWeatherEndPoint.swift in Sources */,

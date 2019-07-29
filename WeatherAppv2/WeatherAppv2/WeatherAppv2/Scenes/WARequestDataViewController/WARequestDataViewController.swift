@@ -67,8 +67,7 @@ class WARequestDataViewController: BaseViewController {
 
 extension WARequestDataViewController : WARequestDataDisplayLogic {
     func showError(msg: String) {
-//        "alert.title" = "Error";
-//        "alert.accept" = "Accept"
+
         let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
