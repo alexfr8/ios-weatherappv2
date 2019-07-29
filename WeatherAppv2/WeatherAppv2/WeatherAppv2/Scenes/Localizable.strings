@@ -15,3 +15,8 @@
 
 "datarequest.inputtitle.body" = "Please introduce  the city name or zipcode";
 "datarequest.input.placehodler" = "City or zip";
+
+//error alert
+
+"alert.title" = "Error";
+"alert.accept" = "Accept";

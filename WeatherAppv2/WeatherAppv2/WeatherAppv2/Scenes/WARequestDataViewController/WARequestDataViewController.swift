@@ -15,7 +15,7 @@ protocol WARequestDataPresenterLogic {
     func setupText(text: String)
 }
 
-class WARequestDataViewController: UIViewController {
+class WARequestDataViewController: BaseViewController {
     //IBOutlets
     
     @IBOutlet weak var lblTitle: UILabel!
@@ -66,6 +66,14 @@ class WARequestDataViewController: UIViewController {
 
 
 extension WARequestDataViewController : WARequestDataDisplayLogic {
+    func showError(msg: String) {
+//        "alert.title" = "Error";
+//        "alert.accept" = "Accept"
+        let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func setupView() {
         //make all the view code changes here.
     }
@@ -81,10 +89,14 @@ extension WARequestDataViewController : WARequestDataDisplayLogic {
 
 extension WARequestDataViewController : WARequestDataPresenterRouterLogic {
     func navigateToDataShow(zeroPosition: Current) {
-         let storyboard = UIStoryboard(name: "WAShowData", bundle: nil)
-         if let controller = storyboard.instantiateInitialViewController() as? WAShowDataViewController{
-            self.present(controller, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "WAShowData", bundle: nil)
+            if let controller = storyboard.instantiateInitialViewController() as? WAShowDataViewController{
+                controller.dataStore?.current = zeroPosition
+                self.present(controller, animated: true, completion: nil)
+            }
         }
+        
     }
 }
 
@@ -96,6 +108,7 @@ extension WARequestDataViewController : UITextFieldDelegate{
          self.presenter?.setupText(text: self.txtInputField.text ?? "")
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.presenter?.setupText(text: self.txtInputField.text ?? "")
         return true;
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {

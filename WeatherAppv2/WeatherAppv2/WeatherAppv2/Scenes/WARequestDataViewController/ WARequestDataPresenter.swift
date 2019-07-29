@@ -11,6 +11,9 @@ import UIKit
 protocol WARequestDataDisplayLogic: class {
     func setupView()
     func setupText(viewModel: WARequestData.ViewModel)
+    func showLoading()
+    func dismissLoading()
+    func showError(msg: String)
 }
 
 protocol WARequestDataPresenterRouterLogic: class {
@@ -22,9 +25,6 @@ protocol WARequestDataStore {
 }
 
 class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
-   
-   
-    
     
     weak var view: (WARequestDataDisplayLogic & WARequestDataPresenterRouterLogic)?
     var networkManager: OpenWeatherManager?
@@ -40,8 +40,37 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
     }
     
     func manageSearchButtonClicked() {
-
-       
+       // self.view?.showLoading()
+        if textToSearch?.isNumber ?? false {
+            networkManager?.getCurrentWeatherByZip(zip: textToSearch ?? "", completion: { (current, error) in
+               //
+                if (error != nil) {
+                    self.view?.showError(msg: error ?? "error")
+                } else {
+                    if let currentWeather = current {
+                         self.view?.navigateToDataShow(zeroPosition: currentWeather)
+                    }else {
+                        self.view?.showError(msg: "error al manejar los datos")
+                    }
+                   
+                }
+               // self.view?.dismissLoading()
+            })
+        } else {
+            networkManager?.getCurrentWeatherByCityName(cityName: textToSearch ?? "", completion: { (current, error) in
+                if (error != nil) {
+                    self.view?.showError(msg: error ?? "error")
+                } else {
+                    if let currentWeather = current {
+                        self.view?.navigateToDataShow(zeroPosition: currentWeather)
+                    }else {
+                        self.view?.showError(msg: "error al manejar los datos")
+                    }
+                    
+                }
+           // self.view?.dismissLoading()
+            })
+        }
        
     }
     func setupText(text: String) {

@@ -14,8 +14,48 @@ protocol WAShowDataPresenterLogic {
 }
 
 
-class WAShowDataViewController: UIViewController {
+class WAShowDataViewController: BaseViewController {
 
+    //IBOUTLETS
+    
+    @IBOutlet weak var lblHighestTemp: UILabel!
+    @IBOutlet weak var lblHighestTempValue: UILabel!
+    
+    @IBOutlet weak var lblHighestTempPosition: UILabel!
+    
+    @IBOutlet weak var lblHighestTempPositionValue: UILabel!
+    
+    @IBOutlet weak var lblHighestTempCity: UILabel!
+    
+    @IBOutlet weak var lblHighestTempCityValue: UILabel!
+    
+    @IBOutlet weak var lblHighestHumidity: UILabel!
+    @IBOutlet weak var lblHighestHumidityValue: UILabel!
+    
+    @IBOutlet weak var lblHighestHumidityPosition: UILabel!
+    
+    @IBOutlet weak var lblHighestHumidityPositionValue: UILabel!
+    
+    @IBOutlet weak var lblHighestHumidityCity: UILabel!
+    @IBOutlet weak var lblHighestHumidityCityValue: UILabel!
+    
+    
+    @IBOutlet weak var lblHighestRain: UILabel!
+    @IBOutlet weak var lblHighestRainValue: UILabel!
+    @IBOutlet weak var lblHighestRainPosition: UILabel!
+    @IBOutlet weak var lblHighestRainPositionValue: UILabel!
+    @IBOutlet weak var lblHighestRainCity: UILabel!
+    @IBOutlet weak var lblHighestRainCityValue: UILabel!
+    
+    
+    
+    @IBOutlet weak var lblHighestWind: UILabel!
+    @IBOutlet weak var lblHighestWindValue: UILabel!
+    @IBOutlet weak var lblHighestWindPosition: UILabel!
+    @IBOutlet weak var lblHighestWindPositionValue: UILabel!
+    @IBOutlet weak var lblHighestWindCity: UILabel!
+    @IBOutlet weak var lblHighestWindCityValue: UILabel!
+    
     
     //VBLES
     var presenter: WAShowDataPresenterLogic?
@@ -51,6 +91,10 @@ class WAShowDataViewController: UIViewController {
     }
     
     //IBActions
+    
+    @IBAction func btnClose(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

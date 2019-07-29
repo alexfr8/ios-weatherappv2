@@ -45,6 +45,8 @@
 		C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49FB22EE35E400B3B160 /* WAShowData.swift */; };
 		C12B49FE22EE35FC00B3B160 /* WAShowData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */; };
 		C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */; };
+		C1792F9B22EF4DF600BDAF6E /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9A22EF4DF600BDAF6E /* String+extension.swift */; };
+		C1792F9D22EF553D00BDAF6E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		C12B49FB22EE35E400B3B160 /* WAShowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowData.swift; sourceTree = "<group>"; };
 		C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WAShowData.storyboard; sourceTree = "<group>"; };
 		C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loading.swift"; sourceTree = "<group>"; };
+		C1792F9A22EF4DF600BDAF6E /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 		C12B49B922EDFF9000B3B160 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */,
 				C12B49F622EE357B00B3B160 /* WAShowDataViewController */,
 				C12B49BA22EDFF9800B3B160 /* WARequestDataViewController */,
 				C12B49BF22EE06B400B3B160 /* Localizable.strings */,
@@ -302,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */,
+				C1792F9A22EF4DF600BDAF6E /* String+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			files = (
 				C12B49E722EE151F00B3B160 /* Main.swift in Sources */,
 				C12B49DD22EE151F00B3B160 /* OpenWeatherManager.swift in Sources */,
+				C1792F9D22EF553D00BDAF6E /* BaseViewController.swift in Sources */,
 				C12B49E622EE151F00B3B160 /* Weather.swift in Sources */,
 				C12B498E22EDFEBB00B3B160 /* WARequestDataViewController.swift in Sources */,
 				C12B49F322EE276300B3B160 /* SystemModel.swift in Sources */,
@@ -455,6 +462,7 @@
 				C12B49DF22EE151F00B3B160 /* Forecast.swift in Sources */,
 				C12B49BC22EE049D00B3B160 /*  WARequestDataPresenter.swift in Sources */,
 				C12B49EB22EE151F00B3B160 /* NetworkLogger.swift in Sources */,
+				C1792F9B22EF4DF600BDAF6E /* String+extension.swift in Sources */,
 				C12B49EA22EE151F00B3B160 /* Router.swift in Sources */,
 				C12B49E322EE151F00B3B160 /* Coordinate.swift in Sources */,
 				C12B49F822EE35C100B3B160 /* WAShowDataViewController.swift in Sources */,

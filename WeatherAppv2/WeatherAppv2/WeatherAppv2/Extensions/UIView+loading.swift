@@ -10,13 +10,18 @@ import UIKit
 
 extension UIView {
     func showBlurLoader() {
-        let blurLoader = BlurLoader(frame: frame)
-        self.addSubview(blurLoader)
+        DispatchQueue.main.async {
+            let blurLoader = BlurLoader(frame: self.frame)
+            self.addSubview(blurLoader)
+        }
+    
     }
     
     func removeBluerLoader() {
-        if let blurLoader = subviews.first(where: { $0 is BlurLoader }) {
-            blurLoader.removeFromSuperview()
+        DispatchQueue.main.async {
+            if let blurLoader = self.subviews.first(where: { $0 is BlurLoader }) {
+                blurLoader.removeFromSuperview()
+            }
         }
     }
 }

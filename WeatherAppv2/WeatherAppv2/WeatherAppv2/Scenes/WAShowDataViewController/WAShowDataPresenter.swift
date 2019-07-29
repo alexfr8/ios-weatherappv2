@@ -18,14 +18,14 @@ protocol WAShowDataDisplayLogic: class {
 
 protocol WAShowDataStore {
     //    var name: String { get set }
+    var current: Current? {get set}
 }
 
 class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
-    
-    
-    
+   
     weak var view: WAShowDataDisplayLogic?
     var networkManager: OpenWeatherManager?
+    var current: Current?
     
     
     func setupView() {
