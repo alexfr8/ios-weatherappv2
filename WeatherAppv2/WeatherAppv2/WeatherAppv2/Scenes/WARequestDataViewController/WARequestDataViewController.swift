@@ -12,6 +12,7 @@ import UIKit
 protocol WARequestDataPresenterLogic {
     func setupView()
     func manageSearchButtonClicked()
+    func setupText(text: String)
 }
 
 class WARequestDataViewController: UIViewController {
@@ -75,21 +76,39 @@ extension WARequestDataViewController : WARequestDataDisplayLogic {
         self.btnShow.setTitle(viewModel.btnSearch, for: .normal)
         self.lblInput.text = viewModel.lblInputTitle
         self.txtInputField.placeholder = viewModel.txtInputPlaceholder
-        
     }
-    
-   
-    
 }
 
 extension WARequestDataViewController : WARequestDataPresenterRouterLogic {
-    func navigateToDataShow() {
-        
+    func navigateToDataShow(zeroPosition: Current) {
+         let storyboard = UIStoryboard(name: "WAShowData", bundle: nil)
+         if let controller = storyboard.instantiateInitialViewController() as? WAShowDataViewController{
+            self.present(controller, animated: true, completion: nil)
+        }
     }
-    
-    
 }
 
 extension WARequestDataViewController : UITextFieldDelegate{
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.presenter?.setupText(text: self.txtInputField.text ?? "")
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+         self.presenter?.setupText(text: self.txtInputField.text ?? "")
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true;
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
 }

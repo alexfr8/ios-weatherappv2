@@ -14,7 +14,7 @@ protocol WARequestDataDisplayLogic: class {
 }
 
 protocol WARequestDataPresenterRouterLogic: class {
-    func navigateToDataShow()
+    func navigateToDataShow(zeroPosition: Current)
 }
 
 protocol WARequestDataStore {
@@ -23,11 +23,12 @@ protocol WARequestDataStore {
 
 class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
    
+   
     
     
     weak var view: (WARequestDataDisplayLogic & WARequestDataPresenterRouterLogic)?
     var networkManager: OpenWeatherManager?
-    
+    var textToSearch: String?
     
     func setupView() {
         
@@ -43,6 +44,10 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
        
        
     }
+    func setupText(text: String) {
+        self.textToSearch = text
+    }
+    
     // MARK: - Services
     
 }
