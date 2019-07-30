@@ -56,7 +56,7 @@ class WAShowDataViewController: BaseViewController {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WAShowDataTableCell.self, forCellReuseIdentifier: WAShowDataTableCell.cellIdentifier)
+       tableView.register(UINib(nibName: WAShowDataTableCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: WAShowDataTableCell.cellIdentifier)
         presenter?.setupView()
         presenter?.setupCoordinates()
         presenter?.retrieveDataForCoordinates()

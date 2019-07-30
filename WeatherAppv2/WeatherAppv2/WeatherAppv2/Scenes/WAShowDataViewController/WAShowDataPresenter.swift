@@ -137,22 +137,22 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     private func calculateTempResults() -> Current? {
         var max = current
         self.tempMax = Constants.cardinalPoints.origin.rawValue
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.temp)!)) {
+        if northCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.temp)!)) {
             max = northCurrentWeather
             self.tempMax = Constants.cardinalPoints.north.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.temp)!)) {
+        if southCurrenWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.temp)!)) {
             max = southCurrenWeather
             self.tempMax = Constants.cardinalPoints.south.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.temp)!)) {
+        if eastCurrentWeather != nil , Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.temp)!)) {
             max = eastCurrentWeather
             self.tempMax = Constants.cardinalPoints.east.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.temp)!)) {
+        if westCurrentWeather != nil , Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.temp)!)) {
             max = westCurrentWeather
             self.tempMax = Constants.cardinalPoints.west.rawValue
         }
@@ -165,22 +165,22 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
        
         var max = current
         self.humidityMax = Constants.cardinalPoints.origin.rawValue
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.humidity)!)) {
+        if northCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.humidity)!)) {
             max = northCurrentWeather
             self.humidityMax = Constants.cardinalPoints.north.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.humidity)!)) {
+        if southCurrenWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.humidity)!)) {
             max = southCurrenWeather
             self.humidityMax = Constants.cardinalPoints.south.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.humidity)!)) {
+        if  eastCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.humidity)!)) {
             max = eastCurrentWeather
             self.humidityMax = Constants.cardinalPoints.east.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.humidity)!)) {
+        if westCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.humidity)!)) {
             max = westCurrentWeather
             self.humidityMax = Constants.cardinalPoints.west.rawValue
         }
@@ -192,22 +192,22 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
         
         var max = current
         self.windMax = Constants.cardinalPoints.origin.rawValue
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.wind.speed)!)) {
+        if northCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.wind.speed)!)) {
             max = northCurrentWeather
             self.windMax = Constants.cardinalPoints.north.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.wind.speed)!)) {
+        if southCurrenWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.wind.speed)!)) {
             max = southCurrenWeather
             self.windMax = Constants.cardinalPoints.south.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.wind.speed)!)) {
+        if eastCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.wind.speed)!)) {
             max = eastCurrentWeather
             self.windMax = Constants.cardinalPoints.east.rawValue
         }
         
-        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.wind.speed)!)) {
+        if westCurrentWeather != nil, Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.wind.speed)!)) {
             max = westCurrentWeather
             self.windMax = Constants.cardinalPoints.west.rawValue
         }
@@ -226,12 +226,23 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
             return UITableViewCell()
         }
        
-        if indexPath.row == 0, current != nil, northCurrentWeather != nil {
+        if indexPath.row == 0, current != nil{
             if let tempResult = calculateTempResults() {
                 cell.updateUITemp(data: tempResult, index: indexPath, position: tempMax ?? "")
             }
         }
         
+        if indexPath.row == 1, current != nil {
+            if let humidityResult = calculateHumidityResults() {
+                cell.updateUIHumidity(data: humidityResult, index: indexPath, position: humidityMax ?? "")
+            }
+        }
+        
+        if indexPath.row == 3, current != nil {
+            if let windResult = calculateWindResults() {
+                cell.updateUIWind(data: windResult, index: indexPath, position: windMax ?? "")
+            }
+        }
         return cell
     }
 }

@@ -44,4 +44,40 @@ class WAShowDataTableCell : UITableViewCell {
         lblPosition.text = NSLocalizedString("cell.position.title", comment: "")
         lblPositionValue.text = position
     }
+    
+    func updateUIHumidity(data : Current, index: IndexPath, position: String) {
+        //cell.title.1
+        lblTitle.text = NSLocalizedString("cell.title.2", comment: "")
+        
+        lblTitleValue.text  = String(format:"%.1f", data.main.humidity)
+        
+        lblCity.text = NSLocalizedString("cell.city.title", comment: "")
+        lblCityValue.text = data.name
+        
+        lblLat.text = NSLocalizedString("cell.lat.title", comment: "")
+        lblLatValue.text = String(format:"%.1f", data.coord.lat)
+        lblLong.text = NSLocalizedString("cell.log.title", comment: "")
+        lblLongValue.text = String(format:"%.1f", data.coord.lon)
+        
+        lblPosition.text = NSLocalizedString("cell.position.title", comment: "")
+        lblPositionValue.text = position
+    }
+    
+    func updateUIWind(data : Current, index: IndexPath, position: String) {
+        //cell.title.1
+        lblTitle.text = NSLocalizedString("cell.title.4", comment: "")
+        
+        lblTitleValue.text  = String(format:"%.1f", data.wind.speed)
+        
+        lblCity.text = NSLocalizedString("cell.city.title", comment: "")
+        lblCityValue.text = data.name
+        
+        lblLat.text = NSLocalizedString("cell.lat.title", comment: "")
+        lblLatValue.text = String(format:"%.1f", data.coord.lat)
+        lblLong.text = NSLocalizedString("cell.log.title", comment: "")
+        lblLongValue.text = String(format:"%.1f", data.coord.lon)
+        
+        lblPosition.text = NSLocalizedString("cell.position.title", comment: "")
+        lblPositionValue.text = position
+    }
 }

@@ -26,7 +26,7 @@
 "cell.title.1" = "Temp: ";
 "cell.title.2" = "Humidity: ";
 "cell.title.3" = "Rain: ";
-"cell.title.4" = "Windy: ";
+"cell.title.4" = "Wind: ";
 
 "cell.city.title" = "City: ";
 "cell.lat.title" = "LAT: ";
