@@ -45,6 +45,8 @@
 		C12B49FC22EE35E400B3B160 /* WAShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B49FB22EE35E400B3B160 /* WAShowData.swift */; };
 		C12B49FE22EE35FC00B3B160 /* WAShowData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */; };
 		C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */; };
+		C12BDC5D22F0B1A000CBE1B1 /* WAShowDataTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12BDC5C22F0B1A000CBE1B1 /* WAShowDataTableCell.xib */; };
+		C12BDC5F22F0B1AE00CBE1B1 /* WAShowDataTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12BDC5E22F0B1AE00CBE1B1 /* WAShowDataTableCell.swift */; };
 		C1792F9B22EF4DF600BDAF6E /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9A22EF4DF600BDAF6E /* String+extension.swift */; };
 		C1792F9D22EF553D00BDAF6E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */; };
 		C1792FA022EF717600BDAF6E /* UtilsCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1792F9F22EF717600BDAF6E /* UtilsCoord.swift */; };
@@ -112,6 +114,8 @@
 		C12B49FB22EE35E400B3B160 /* WAShowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowData.swift; sourceTree = "<group>"; };
 		C12B49FD22EE35FC00B3B160 /* WAShowData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WAShowData.storyboard; sourceTree = "<group>"; };
 		C12B4A0022EE3A5800B3B160 /* UIView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loading.swift"; sourceTree = "<group>"; };
+		C12BDC5C22F0B1A000CBE1B1 /* WAShowDataTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WAShowDataTableCell.xib; sourceTree = "<group>"; };
+		C12BDC5E22F0B1AE00CBE1B1 /* WAShowDataTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAShowDataTableCell.swift; sourceTree = "<group>"; };
 		C1792F9A22EF4DF600BDAF6E /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		C1792F9C22EF553D00BDAF6E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C1792F9F22EF717600BDAF6E /* UtilsCoord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsCoord.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		C12B498A22EDFEBB00B3B160 /* WeatherAppv2 */ = {
 			isa = PBXGroup;
 			children = (
+				C12BDC5A22F0AC4E00CBE1B1 /* Views */,
 				C1792F9E22EF707200BDAF6E /* Utils */,
 				C12B49FF22EE3A3B00B3B160 /* Extensions */,
 				C12B49ED22EE15CF00B3B160 /* Constants */,
@@ -315,6 +320,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C12BDC5A22F0AC4E00CBE1B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C12BDC5B22F0B16600CBE1B1 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C12BDC5B22F0B16600CBE1B1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C12BDC5C22F0B1A000CBE1B1 /* WAShowDataTableCell.xib */,
+				C12BDC5E22F0B1AE00CBE1B1 /* WAShowDataTableCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		C1792F9E22EF707200BDAF6E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +454,7 @@
 				C12B49C022EE06B400B3B160 /* Localizable.strings in Resources */,
 				C12B499322EDFEBD00B3B160 /* Assets.xcassets in Resources */,
 				C12B499122EDFEBB00B3B160 /* WARequestDataViewController.storyboard in Resources */,
+				C12BDC5D22F0B1A000CBE1B1 /* WAShowDataTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +495,7 @@
 				C12B4A0122EE3A5800B3B160 /* UIView+loading.swift in Sources */,
 				C12B49DF22EE151F00B3B160 /* Forecast.swift in Sources */,
 				C12B49BC22EE049D00B3B160 /*  WARequestDataPresenter.swift in Sources */,
+				C12BDC5F22F0B1AE00CBE1B1 /* WAShowDataTableCell.swift in Sources */,
 				C12B49EB22EE151F00B3B160 /* NetworkLogger.swift in Sources */,
 				C1792F9B22EF4DF600BDAF6E /* String+extension.swift in Sources */,
 				C12B49EA22EE151F00B3B160 /* Router.swift in Sources */,

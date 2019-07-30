@@ -17,4 +17,12 @@ struct Constants {
     static let iconExtension = ".png"
     
     static let kmForCalculating:Double = 200
+    
+    enum cardinalPoints: String {
+        case origin = "ORIGIN"
+        case north  = "NORTH"
+        case south  = "SOUTH"
+        case east   = "EASTH"
+        case west   = "WEST"
+    }
 }

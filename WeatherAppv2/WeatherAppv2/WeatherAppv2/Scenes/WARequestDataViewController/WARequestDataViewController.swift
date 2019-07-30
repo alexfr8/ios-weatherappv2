@@ -101,22 +101,23 @@ extension WARequestDataViewController : WARequestDataPresenterRouterLogic {
 
 extension WARequestDataViewController : UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.presenter?.setupText(text: self.txtInputField.text ?? "")
+      
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
          self.presenter?.setupText(text: self.txtInputField.text ?? "")
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        self.presenter?.setupText(text: self.txtInputField.text ?? "")
         return true;
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true;
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+       
         return true;
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.presenter?.setupText(text: self.txtInputField.text ?? "" + string )
         return true;
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -28,7 +28,7 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
     
     weak var view: (WARequestDataDisplayLogic & WARequestDataPresenterRouterLogic)?
     var networkManager: OpenWeatherManager?
-    var textToSearch: String?
+    var textToSearch: String? = ""
     
     func setupView() {
         
@@ -41,7 +41,8 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
     
     func manageSearchButtonClicked() {
        // self.view?.showLoading()
-        if textToSearch?.isNumber ?? false {
+        if textToSearch?.count ?? 0 > 0 {
+        if textToSearch?.isNumber ?? false  {
             networkManager?.getCurrentWeatherByZip(zip: textToSearch ?? "", completion: { (current, error) in
                //
                 if (error != nil) {
@@ -70,6 +71,7 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
                 }
            // self.view?.dismissLoading()
             })
+        }
         }
        
     }

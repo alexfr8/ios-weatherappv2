@@ -13,7 +13,8 @@ protocol WAShowDataPresenterLogic {
     func setupView()
     func setupCoordinates()
     func retrieveDataForCoordinates()
-    func calculateResults()
+    func manageClose()
+    func getRowForTable(tableView:UITableView, indexPath: IndexPath) -> UITableViewCell
 }
 
 
@@ -21,44 +22,9 @@ class WAShowDataViewController: BaseViewController {
 
     //IBOUTLETS
     
-    @IBOutlet weak var lblHighestTemp: UILabel!
-    @IBOutlet weak var lblHighestTempValue: UILabel!
     
-    @IBOutlet weak var lblHighestTempPosition: UILabel!
-    
-    @IBOutlet weak var lblHighestTempPositionValue: UILabel!
-    
-    @IBOutlet weak var lblHighestTempCity: UILabel!
-    
-    @IBOutlet weak var lblHighestTempCityValue: UILabel!
-    
-    @IBOutlet weak var lblHighestHumidity: UILabel!
-    @IBOutlet weak var lblHighestHumidityValue: UILabel!
-    
-    @IBOutlet weak var lblHighestHumidityPosition: UILabel!
-    
-    @IBOutlet weak var lblHighestHumidityPositionValue: UILabel!
-    
-    @IBOutlet weak var lblHighestHumidityCity: UILabel!
-    @IBOutlet weak var lblHighestHumidityCityValue: UILabel!
-    
-    
-    @IBOutlet weak var lblHighestRain: UILabel!
-    @IBOutlet weak var lblHighestRainValue: UILabel!
-    @IBOutlet weak var lblHighestRainPosition: UILabel!
-    @IBOutlet weak var lblHighestRainPositionValue: UILabel!
-    @IBOutlet weak var lblHighestRainCity: UILabel!
-    @IBOutlet weak var lblHighestRainCityValue: UILabel!
-    
-    
-    
-    @IBOutlet weak var lblHighestWind: UILabel!
-    @IBOutlet weak var lblHighestWindValue: UILabel!
-    @IBOutlet weak var lblHighestWindPosition: UILabel!
-    @IBOutlet weak var lblHighestWindPositionValue: UILabel!
-    @IBOutlet weak var lblHighestWindCity: UILabel!
-    @IBOutlet weak var lblHighestWindCityValue: UILabel!
-    
+    @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     //VBLES
     var presenter: WAShowDataPresenterLogic?
@@ -90,6 +56,7 @@ class WAShowDataViewController: BaseViewController {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(WAShowDataTableCell.self, forCellReuseIdentifier: WAShowDataTableCell.cellIdentifier)
         presenter?.setupView()
         presenter?.setupCoordinates()
         presenter?.retrieveDataForCoordinates()
@@ -98,6 +65,7 @@ class WAShowDataViewController: BaseViewController {
     //IBActions
     
     @IBAction func btnClose(_ sender: Any) {
+        self.presenter?.manageClose()
     }
     
     /*
@@ -114,9 +82,6 @@ class WAShowDataViewController: BaseViewController {
 
 
 extension WAShowDataViewController : WAShowDataDisplayLogic {
-   
-    
-   
     
     func setupView() {
         
@@ -125,6 +90,7 @@ extension WAShowDataViewController : WAShowDataDisplayLogic {
     func setupText(viewModel: WARequestData.ViewModel) {
         
     }
+    
     func showError(msg: String) {
         let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
@@ -132,22 +98,23 @@ extension WAShowDataViewController : WAShowDataDisplayLogic {
     }
     
     func completedRetrieve() {
-        self.presenter?.calculateResults()
+        DispatchQueue.main.async {
+             self.tableView.reloadData()
+        }
     }
 
-    func setupTempValues(tempValue: String, tempCity: String, tempLat: String, tempLong: String, cardinal: String) {
-        
+    func closeScreen() {
+        self.dismiss(animated: true, completion:   nil)
+    }
+}
+
+extension WAShowDataViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
     }
     
-    func setupHumidityValues(humidityValue: String, humidityCity: String, humiLat: String, humiLong: String, cardinal: String) {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return self.presenter?.getRowForTable(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
     }
-    
-    func setupRainValues(rainValue: String, rainCity: String, rainLat: String, rainLong: String, cardinal: String) {
-        
-    }
-    
-    func setupWindValues(windValue: String, windCity: String, windLat: String, windLong: String, cardinal: String) {
-        
-    }
+
 }

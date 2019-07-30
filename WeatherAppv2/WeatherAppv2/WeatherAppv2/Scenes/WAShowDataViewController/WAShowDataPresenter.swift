@@ -13,25 +13,17 @@ protocol WAShowDataDisplayLogic: class {
     func setupView()
     func setupText(viewModel: WARequestData.ViewModel)
     func showError(msg:String)
+    func closeScreen()
     func completedRetrieve()
-    func setupTempValues(tempValue: String, tempCity: String, tempLat: String, tempLong: String, cardinal:String)
-    func setupHumidityValues(humidityValue: String, humidityCity: String, humiLat: String, humiLong: String, cardinal:String)
-    func setupRainValues(rainValue: String, rainCity: String, rainLat: String, rainLong: String, cardinal:String)
-    func setupWindValues(windValue: String, windCity: String, windLat: String, windLong: String, cardinal:String)
 }
 
-
-
 protocol WAShowDataStore {
-    //    var name: String { get set }
+  
     var current: Current? {get set}
+    
 }
 
 class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
-   
-    
-  
-    
    
     weak var view: WAShowDataDisplayLogic?
     var networkManager: OpenWeatherManager?
@@ -45,6 +37,12 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     var southCurrenWeather: Current?
     var westCurrentWeather: Current?
     var eastCurrentWeather: Current?
+    
+    var tempMax: String?
+    var humidityMax: String?
+    var rainMax: String?
+    var windMax: String?
+    let groupForCurrents = DispatchGroup()
     
     func setupView() {
         
@@ -78,58 +76,162 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
         
     }
     
+    func manageClose() {
+        self.view?.closeScreen()
+    }
+    
     func retrieveDataForCoordinates() {
-        let groupForCurrents = DispatchGroup()
-        groupForCurrents.enter()
+       
+        self.retrieveDataForNorth()
+       
+       
+    }
+    
+    private func retrieveDataForNorth() {
+       
         networkManager?.getCurrentWeatherByCoords(lat: northPosition?.latitude ?? 0, long: northPosition?.longitude ?? 0, completion: { (northCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.northCurrentWeather = northCurrentResponse
             }
-            groupForCurrents.leave()
+           self.retrieveDataForSouth()
         })
-         groupForCurrents.enter()
-        networkManager?.getCurrentWeatherByCoords(lat: westPosition?.latitude ?? 0, long: westPosition?.longitude ?? 0, completion: { (westCurrentResponse, error) in
-            if error != nil {
-                self.view?.showError(msg: error ?? "")
-            } else {
-                self.westCurrentWeather = westCurrentResponse
-            }
-            groupForCurrents.leave()
-        })
-         groupForCurrents.enter()
+    }
+   
+    private func retrieveDataForSouth() {
         networkManager?.getCurrentWeatherByCoords(lat: southPosition?.latitude ?? 0, long: southPosition?.longitude ?? 0, completion: { (southCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.southCurrenWeather = southCurrentResponse
             }
-            groupForCurrents.leave()
+            self.retrieveDataForEast()
         })
-         groupForCurrents.enter()
+    }
+    
+    private func retrieveDataForEast() {
+      
         networkManager?.getCurrentWeatherByCoords(lat: eastPosition?.latitude ?? 0, long: eastPosition?.longitude ?? 0, completion: { (eastCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.eastCurrentWeather = eastCurrentResponse
             }
-            groupForCurrents.leave()
+           self.retrieveDataForWest()
         })
-        groupForCurrents.notify(queue: DispatchQueue.main) {
-            print("hola")
-            self.view?.completedRetrieve()
-        }
     }
     
-    func calculateResults() {
+    private func retrieveDataForWest() {
+        
+        networkManager?.getCurrentWeatherByCoords(lat: westPosition?.latitude ?? 0, long: westPosition?.longitude ?? 0, completion: { (westCurrentResponse, error) in
+            if error != nil {
+                self.view?.showError(msg: error ?? "")
+            } else {
+                self.westCurrentWeather = westCurrentResponse
+            }
+            self.view?.completedRetrieve()
+        })
         
     }
-   
+    private func calculateTempResults() -> Current? {
+        var max = current
+        self.tempMax = Constants.cardinalPoints.origin.rawValue
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.temp)!)) {
+            max = northCurrentWeather
+            self.tempMax = Constants.cardinalPoints.north.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.temp)!)) {
+            max = southCurrenWeather
+            self.tempMax = Constants.cardinalPoints.south.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.temp)!)) {
+            max = eastCurrentWeather
+            self.tempMax = Constants.cardinalPoints.east.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.temp)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.temp)!)) {
+            max = westCurrentWeather
+            self.tempMax = Constants.cardinalPoints.west.rawValue
+        }
+        
+        
+        return max
+    }
     
-    private func calculateTempResults() {
+    private func calculateHumidityResults() -> Current? {
+       
+        var max = current
+        self.humidityMax = Constants.cardinalPoints.origin.rawValue
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.main.humidity)!)) {
+            max = northCurrentWeather
+            self.humidityMax = Constants.cardinalPoints.north.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.main.humidity)!)) {
+            max = southCurrenWeather
+            self.humidityMax = Constants.cardinalPoints.south.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.main.humidity)!)) {
+            max = eastCurrentWeather
+            self.humidityMax = Constants.cardinalPoints.east.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.main.humidity)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.main.humidity)!)) {
+            max = westCurrentWeather
+            self.humidityMax = Constants.cardinalPoints.west.rawValue
+        }
+        
+        return max
+    }
     
+    private func calculateWindResults() -> Current? {
+        
+        var max = current
+        self.windMax = Constants.cardinalPoints.origin.rawValue
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((northCurrentWeather?.wind.speed)!)) {
+            max = northCurrentWeather
+            self.windMax = Constants.cardinalPoints.north.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((southCurrenWeather?.wind.speed)!)) {
+            max = southCurrenWeather
+            self.windMax = Constants.cardinalPoints.south.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((eastCurrentWeather?.wind.speed)!)) {
+            max = eastCurrentWeather
+            self.windMax = Constants.cardinalPoints.east.rawValue
+        }
+        
+        if Unicode.CanonicalCombiningClass(rawValue: UInt8((max?.wind.speed)!)) < Unicode.CanonicalCombiningClass(rawValue: UInt8((westCurrentWeather?.wind.speed)!)) {
+            max = westCurrentWeather
+            self.windMax = Constants.cardinalPoints.west.rawValue
+        }
+        
+        return max
     }
     // MARK: - Services
     
+    
+    //MARK: - TABLEVIEW
+    
+    func getRowForTable(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WAShowDataTableCell.cellIdentifier) as? WAShowDataTableCell else {
+            return UITableViewCell()
+        }
+       
+        if indexPath.row == 0, current != nil, northCurrentWeather != nil {
+            if let tempResult = calculateTempResults() {
+                cell.updateUITemp(data: tempResult, index: indexPath, position: tempMax ?? "")
+            }
+        }
+        
+        return cell
+    }
 }

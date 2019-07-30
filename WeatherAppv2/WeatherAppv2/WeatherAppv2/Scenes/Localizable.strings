@@ -20,3 +20,15 @@
 
 "alert.title" = "Error";
 "alert.accept" = "Accept";
+
+// CELL TO SHOW DATA
+
+"cell.title.1" = "Temp: ";
+"cell.title.2" = "Humidity: ";
+"cell.title.3" = "Rain: ";
+"cell.title.4" = "Windy: ";
+
+"cell.city.title" = "City: ";
+"cell.lat.title" = "LAT: ";
+"cell.log.title" = "LONG: ";
+"cell.position.title" = "Position: ";
