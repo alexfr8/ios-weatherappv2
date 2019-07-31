@@ -34,8 +34,17 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
         
         let viewModel = WARequestData.ViewModel()
         self.networkManager = OpenWeatherManager()
+       
         view?.setupView()
         view?.setupText(viewModel: viewModel)
+        
+        networkManager?.getHistoricWeatherByCoords(lat: 40, long: 20, completion: { (current, error) in
+            if (error != nil) {
+               print(error)
+            } else {
+                print(current)
+            }
+        })
         
     }
     

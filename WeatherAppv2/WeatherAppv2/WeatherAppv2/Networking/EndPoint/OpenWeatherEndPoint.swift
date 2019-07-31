@@ -8,9 +8,8 @@
 
 import Foundation
 enum NetworkEnvironment {
-    case qa
-    case production
-    case staging
+    case apiForescast
+    case historyData
 }
 
 
@@ -23,6 +22,7 @@ public enum OpenWeatherEndPoint {
     case currentWeatherByZip(zip: String)
     case currentWeatherByCoords(lat: Double, long: Double)
     
+    case historicWeatherByCoords(lat: Double, long: Double)
 }
 
 
@@ -31,10 +31,14 @@ extension OpenWeatherEndPoint: EndPointType {
     
     
     var environmentBaseURL : String {
+       
         switch OpenWeatherManager.appEnvironment {
-        case .production: return "https://api.openweathermap.org"
-        case .qa: return "https://api.openweathermap.org"
-        case .staging: return "https://api.openweathermap.org"
+
+       
+        case .apiForescast:
+            return "https://api.openweathermap.org"
+        case .historyData:
+            return "http://history.openweathermap.org"
         }
     }
     
@@ -58,10 +62,9 @@ extension OpenWeatherEndPoint: EndPointType {
              return "/data/2.5/weather"
         case .currentWeatherByCoords:
             return "/data/2.5/weather"
+        case .historicWeatherByCoords(_, _):
+            return "/data/2.5/history/city"
         }
-        
-        
-    
     }
     
     
@@ -77,6 +80,8 @@ extension OpenWeatherEndPoint: EndPointType {
         case .currentWeatherByZip( _):
             return .get
         case .currentWeatherByCoords(_ , _):
+            return .get
+        case .historicWeatherByCoords(_, _):
             return .get
         }
     }
@@ -124,6 +129,21 @@ extension OpenWeatherEndPoint: EndPointType {
                                       bodyEncoding: .urlEncoding ,
                                       urlParameters: ["lat": String(format:"%.8f",  lat),
                                                       "lon":String(format:"%.8f",  long),
+                                                      "mode":"json",
+                                                      "units":"metric",
+                                                      "cnt":"60",
+                                                      "appid":Constants.OpenWeatherAPIKEY])
+       
+        case .historicWeatherByCoords(let lat, let long):
+            let currentHour = Date()
+            print(currentHour.addingTimeInterval(-3600))
+            return .requestParameters(bodyParameters: [:],
+                                      bodyEncoding: .urlEncoding ,
+                                      urlParameters: ["lat": String(format:"%.8f",  lat),
+                                                      "lon":String(format:"%.8f",  long),
+                                                      "type":"hour",
+                                                      "start": String(format:"%f",currentHour.addingTimeInterval(-3600) as CVarArg ),
+                                                      "end": String(format: "%f", currentHour.timeIntervalSince1970),
                                                       "mode":"json",
                                                       "units":"metric",
                                                       "cnt":"60",
