@@ -36,7 +36,6 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
         self.networkManager = OpenWeatherManager()
         view?.setupView()
         view?.setupText(viewModel: viewModel)
-        
     }
     
     func manageSearchButtonClicked() {
