@@ -38,13 +38,6 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
         view?.setupView()
         view?.setupText(viewModel: viewModel)
         
-        networkManager?.getHistoricWeatherByCoords(lat: 40, long: 20, completion: { (current, error) in
-            if (error != nil) {
-               print(error)
-            } else {
-                print(current)
-            }
-        })
         
     }
     
