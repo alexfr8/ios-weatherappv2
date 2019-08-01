@@ -25,6 +25,8 @@ protocol WAShowDataStore {
 
 class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
    
+    
+   
     weak var view: WAShowDataDisplayLogic?
     var networkManager: OpenWeatherManager?
     var current: Current?
@@ -225,6 +227,10 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     
     //MARK: - TABLEVIEW
     
+    func getNumerOfRows()  -> Int{
+        return 3
+    }
+    
     func getRowForTable(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -244,7 +250,7 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
             }
         }
         
-        if indexPath.row == 3, current != nil {
+        if indexPath.row == 2, current != nil {
             if let windResult = calculateWindResults() {
                 cell.updateUIWind(data: windResult, index: indexPath, position: windMax ?? "")
             }

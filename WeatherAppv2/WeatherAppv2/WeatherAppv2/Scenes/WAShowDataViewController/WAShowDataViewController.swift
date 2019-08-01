@@ -14,6 +14,7 @@ protocol WAShowDataPresenterLogic {
     func setupCoordinates()
     func retrieveDataForCoordinates()
     func manageClose()
+    func getNumerOfRows() -> Int
     func getRowForTable(tableView:UITableView, indexPath: IndexPath) -> UITableViewCell
 }
 
@@ -110,7 +111,7 @@ extension WAShowDataViewController : WAShowDataDisplayLogic {
 
 extension WAShowDataViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.presenter?.getNumerOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
