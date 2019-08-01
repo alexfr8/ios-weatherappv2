@@ -116,7 +116,7 @@ extension WARequestDataViewController : UITextFieldDelegate{
         return true;
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        self.presenter?.setupText(text: self.txtInputField.text ?? "" + string )
+        self.presenter?.setupText(text: String(format: "%@%@", self.txtInputField.text ?? "", string))
         return true;
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
