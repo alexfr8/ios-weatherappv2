@@ -40,6 +40,7 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
        // self.view?.showLoading()
         if textToSearch?.count ?? 0 > 0 {
         if textToSearch?.isNumber ?? false  {
+            self.view?.showLoading()
             networkManager?.getCurrentWeatherByZip(zip: textToSearch ?? "", completion: { (current, error) in
                //
                 if (error != nil) {
@@ -52,9 +53,10 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
                     }
                    
                 }
-               // self.view?.dismissLoading()
+                self.view?.dismissLoading()
             })
         } else {
+            self.view?.showLoading()
             networkManager?.getCurrentWeatherByCityName(cityName: textToSearch ?? "", completion: { (current, error) in
                 if (error != nil) {
                     self.view?.showError(msg: error ?? "error")
@@ -66,7 +68,7 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
                     }
                     
                 }
-           // self.view?.dismissLoading()
+                self.view?.dismissLoading()
             })
         }
         }

@@ -13,6 +13,8 @@ protocol WAShowDataDisplayLogic: class {
     func showError(msg:String)
     func closeScreen()
     func completedRetrieve()
+    func showLoading()
+    func dismissLoading()
 }
 
 protocol WAShowDataStore {
@@ -78,7 +80,7 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     }
     
     func retrieveDataForCoordinates() {
-        
+        self.view?.showLoading()
         self.retrieveDataForNorth()
         self.retrieveDataForSouth()
         self.retrieveDataForEast()
@@ -86,6 +88,7 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
         
         groupForCurrents.notify(queue: .main) {
             self.view?.completedRetrieve()
+            self.view?.dismissLoading()
         }
     }
     
