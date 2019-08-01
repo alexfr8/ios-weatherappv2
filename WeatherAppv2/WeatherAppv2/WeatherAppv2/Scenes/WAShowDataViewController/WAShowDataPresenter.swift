@@ -81,56 +81,62 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     }
     
     func retrieveDataForCoordinates() {
-       
+        
         self.retrieveDataForNorth()
-       
-       
+        self.retrieveDataForSouth()
+        self.retrieveDataForEast()
+        self.retrieveDataForWest()
+        
+        groupForCurrents.notify(queue: .main) {
+            self.view?.completedRetrieve()
+        }
     }
     
     private func retrieveDataForNorth() {
-       
+        groupForCurrents.enter()
         networkManager?.getCurrentWeatherByCoords(lat: northPosition?.latitude ?? 0, long: northPosition?.longitude ?? 0, completion: { (northCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.northCurrentWeather = northCurrentResponse
             }
-           self.retrieveDataForSouth()
+            self.groupForCurrents.leave()
         })
     }
    
     private func retrieveDataForSouth() {
+        groupForCurrents.enter()
         networkManager?.getCurrentWeatherByCoords(lat: southPosition?.latitude ?? 0, long: southPosition?.longitude ?? 0, completion: { (southCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.southCurrenWeather = southCurrentResponse
             }
-            self.retrieveDataForEast()
+            self.groupForCurrents.leave()
         })
     }
     
     private func retrieveDataForEast() {
-      
+        groupForCurrents.enter()
         networkManager?.getCurrentWeatherByCoords(lat: eastPosition?.latitude ?? 0, long: eastPosition?.longitude ?? 0, completion: { (eastCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.eastCurrentWeather = eastCurrentResponse
             }
-           self.retrieveDataForWest()
+           self.groupForCurrents.leave()
         })
     }
     
     private func retrieveDataForWest() {
-        
+        groupForCurrents.enter()
         networkManager?.getCurrentWeatherByCoords(lat: westPosition?.latitude ?? 0, long: westPosition?.longitude ?? 0, completion: { (westCurrentResponse, error) in
             if error != nil {
                 self.view?.showError(msg: error ?? "")
             } else {
                 self.westCurrentWeather = westCurrentResponse
             }
-            self.view?.completedRetrieve()
+            self.groupForCurrents.leave()
         })
         
     }
