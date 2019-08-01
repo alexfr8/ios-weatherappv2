@@ -83,14 +83,6 @@ class WAShowDataViewController: BaseViewController {
 
 extension WAShowDataViewController : WAShowDataDisplayLogic {
     
-    func setupView() {
-        
-    }
-    
-    func setupText(viewModel: WARequestData.ViewModel) {
-        
-    }
-    
     func showError(msg: String) {
         let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))

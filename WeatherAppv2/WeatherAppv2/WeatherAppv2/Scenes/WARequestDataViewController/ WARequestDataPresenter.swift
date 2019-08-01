@@ -9,7 +9,6 @@
 import UIKit
 
 protocol WARequestDataDisplayLogic: class {
-    func setupView()
     func setupText(viewModel: WARequestData.ViewModel)
     func showLoading()
     func dismissLoading()
@@ -34,7 +33,6 @@ class WARequestDataPresenter: WARequestDataPresenterLogic, WARequestDataStore {
         
         let viewModel = WARequestData.ViewModel()
         self.networkManager = OpenWeatherManager()
-        view?.setupView()
         view?.setupText(viewModel: viewModel)
     }
     

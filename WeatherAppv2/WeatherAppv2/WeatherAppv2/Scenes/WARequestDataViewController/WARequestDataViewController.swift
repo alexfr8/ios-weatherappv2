@@ -75,9 +75,7 @@ extension WARequestDataViewController : WARequestDataDisplayLogic {
         }
     }
     
-    func setupView() {
-        //make all the view code changes here.
-    }
+    
     
     func setupText(viewModel: WARequestData.ViewModel) {
         self.lblTitle.text = viewModel.lblTitle
