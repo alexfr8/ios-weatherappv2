@@ -66,11 +66,13 @@ class WARequestDataViewController: BaseViewController {
 
 
 extension WARequestDataViewController : WARequestDataDisplayLogic {
+    
     func showError(msg: String) {
-
-        let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("alert.title", comment: "") , message: msg, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("alert.accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func setupView() {
@@ -101,19 +103,18 @@ extension WARequestDataViewController : WARequestDataPresenterRouterLogic {
 
 extension WARequestDataViewController : UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-      
+        self.presenter?.setupText(text: self.txtInputField.text ?? "")
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
          self.presenter?.setupText(text: self.txtInputField.text ?? "")
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.presenter?.setupText(text: self.txtInputField.text ?? "")
         return true;
     }
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return true;
-    }
+   
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-       
+
         return true;
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
