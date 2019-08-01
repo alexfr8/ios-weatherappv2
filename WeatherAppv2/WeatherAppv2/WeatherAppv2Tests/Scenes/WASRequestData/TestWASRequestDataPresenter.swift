@@ -72,19 +72,6 @@ class TestWASRequestDataPresenter: XCTestCase {
     
     // MARK: Tests
     
-    func testSetupView() {
-        //Given
-        let spy = WARequestDataDisplayLogicSpy()
-        sut.view = spy
-        
-        //When
-        
-        sut.setupView()
-        //Then
-        XCTAssertTrue(spy.setupTextCalled)
-        XCTAssertTrue(spy.setupViewCalled)
-    }
-    
     func testManageSearchButtonClicked() {
         //Given
         let spy = WARequestDataDisplayLogicSpy()

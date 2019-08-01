@@ -10,8 +10,6 @@ import Foundation
 import MapKit
 
 protocol WAShowDataDisplayLogic: class {
-    func setupView()
-    func setupText(viewModel: WARequestData.ViewModel)
     func showError(msg:String)
     func closeScreen()
     func completedRetrieve()
@@ -48,11 +46,8 @@ class WAShowDataPresenter: WAShowDataPresenterLogic, WAShowDataStore {
     
     func setupView() {
         
-        let viewModel = WARequestData.ViewModel()
         self.networkManager = OpenWeatherManager()
-        view?.setupView()
-        view?.setupText(viewModel: viewModel)
-        
+       
     }
     
     func setupCoordinates() {

@@ -78,13 +78,6 @@ class TestWASRequestDataViewController: XCTestCase {
         XCTAssertTrue(spy.setupViewCalled, "viewDidLoad() should ask the presenter to setup View")
     }
     
-    func testSetupView() {
-        
-        loadView()
-        sut.setupView()
-        XCTAssertEqual(sut.lblInfo.text,NSLocalizedString("datarequest.infolabel.body", comment: ""))
-     
-    }
     
     func testSetupText() {
         //GIVEN
